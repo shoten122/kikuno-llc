@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同会社喜久野</title>
+<style>
+  :root {
+    --bg: #f7f2e9;
+    --surface: #fffdf9;
+    --surface-2: #efe6d6;
+    --ink: #2a2119;
+    --ink-soft: #5c4f42;
+    --leather: #8a4a2a;
+    --leather-deep: #5c3018;
+    --stitch: #b98a4e;
+    --line: #ddd0b8;
+    --font-display: "Fraunces", "Hiragino Mincho ProN", serif;
+    --font-body: "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1611;
+      --surface: #241c16;
+      --surface-2: #2f251d;
+      --ink: #efe4d4;
+      --ink-soft: #c2b09a;
+      --leather: #d38a52;
+      --leather-deep: #e8a66b;
+      --stitch: #8a6a3e;
+      --line: #3c3126;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1611;
+    --surface: #241c16;
+    --surface-2: #2f251d;
+    --ink: #efe4d4;
+    --ink-soft: #c2b09a;
+    --leather: #d38a52;
+    --leather-deep: #e8a66b;
+    --stitch: #8a6a3e;
+    --line: #3c3126;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    margin: 0;
+    padding-inline: 0;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  .wrap { max-width: 1040px; margin-inline: auto; padding-inline: 24px; }
+  section { padding-block: 72px; }
+
+  /* header */
+  header.site {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 16px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .brand .kind { font-family: var(--font-body); font-size: 0.68rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.08em; }
+  nav.links { display: flex; gap: 28px; font-size: 0.92rem; }
+  nav.links a { text-decoration: none; color: var(--ink-soft); border-bottom: 1px solid transparent; padding-bottom: 2px; }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--leather); border-color: var(--leather); }
+
+  /* hero */
+  .hero { padding-block: 88px 56px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.76rem;
+    letter-spacing: 0.18em;
+    color: var(--leather);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--leather); display: inline-block; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.28;
+    max-width: 15ch;
+  }
+  .hero .lede {
+    margin-top: 26px;
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .hero .cta {
+    margin-top: 36px;
+    display: inline-flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--leather);
+    color: #fff8ef;
+    text-decoration: none;
+    padding: 13px 26px;
+    border-radius: 3px;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    transition: background 0.15s ease;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--leather-deep); }
+  .btn.ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn.ghost:hover { border-color: var(--leather); color: var(--leather); }
+
+  /* stitch divider */
+  .stitch {
+    width: 100%;
+    height: 18px;
+    display: block;
+  }
+  .stitch path { stroke: var(--stitch); stroke-width: 2; stroke-dasharray: 7 8; fill: none; stroke-linecap: round; }
+
+  /* services */
+  .section-head { max-width: 56ch; margin-bottom: 44px; }
+  .section-head .eyebrow { margin-bottom: 14px; }
+  .section-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .section-head p { color: var(--ink-soft); margin-top: 14px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .card {
+    background: var(--surface);
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card .num { font-family: var(--font-display); font-size: 0.85rem; color: var(--leather); font-variant-numeric: tabular-nums; }
+  .card h3 { font-size: 1.08rem; }
+  .card p { color: var(--ink-soft); font-size: 0.94rem; margin: 0; }
+  .card .tag {
+    margin-top: auto;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--stitch);
+    border: 1px solid var(--line);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  /* profile */
+  .profile {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .profile-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 8px 24px;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .profile-row:last-child { border-bottom: none; }
+  .profile-row dt { color: var(--ink-soft); font-size: 0.86rem; letter-spacing: 0.02em; }
+  .profile-row dd { margin: 0; font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) {
+    .profile-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* contact */
+  .contact-panel {
+    background: var(--leather-deep);
+    color: #fbf1e4;
+    border-radius: 6px;
+    padding: 48px 40px;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1.1fr 1fr;
+  }
+  @media (max-width: 700px) { .contact-panel { grid-template-columns: 1fr; padding: 34px 24px; } }
+  .contact-panel h2 { font-size: 1.5rem; color: #fff8ef; }
+  .contact-panel p { color: #f1ddc4; margin-top: 12px; max-width: 40ch; }
+  .contact-fields { display: flex; flex-direction: column; gap: 16px; align-self: center; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field .label { font-size: 0.72rem; letter-spacing: 0.08em; color: #e8c79a; }
+  .field .value { font-size: 1rem; }
+  .field .value.placeholder { color: #e8c79a; font-style: italic; }
+  .note {
+    font-size: 0.78rem;
+    color: #e8c79a;
+    border-top: 1px dashed rgba(251, 241, 228, 0.35);
+    padding-top: 14px;
+    margin-top: 4px;
+  }
+
+  footer.site {
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <div class="brand">合同会社喜久野 <span class="kind">KIKUNO LLC</span></div>
+    <nav class="links">
+      <a href="#services">事業内容</a>
+      <a href="#profile">会社概要</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">LEATHER &amp; TEXTILE REPAIR</div>
+    <h1>永く使うために、<br>直すという選択を。</h1>
+    <p class="lede">合同会社喜久野は、鞄を中心とした革製品・繊維製品の修理を手がける会社です。傷んだ金具や持ち手、生地の補修など、ものを長く使い続けるための修理に対応しています。</p>
+    <div class="cta">
+      <a class="btn" href="#contact">お問い合わせ</a>
+      <a class="btn ghost" href="#services">事業内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch" viewBox="0 0 1040 18" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 9 H1040" />
+</svg>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">事業内容</div>
+      <h2>鞄の修理を中心に</h2>
+      <p>愛着のあるバッグの修理も承ります。熟練の職人が一つ一つ丁寧に修理し、長くご愛用いただけるようサポートします。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>鞄の修理</h3>
+        <p>ほつれ直し、ファスナーや金具などのパーツ交換、革の補修など、幅広い修理に対応しております。熟練の職人が一点一点丁寧に作業し、長くご愛用いただけるようサポートいたします。</p>
+        <span class="tag">現在対応中</span>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>衣類の直し</h3>
+        <p>裾上げなど鞄以外の繊維製品の直しにも対応していますが、まだ経験が浅い分野のため、今後さらに技術を磨いてまいります。</p>
+        <span class="tag">今後強化予定</span>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>今後の事業展開</h3>
+        <p>定款上は、皮革製品・繊維製品の企画・製造・卸売及び小売業も事業目的に含まれており、今後の展開の可能性があります。</p>
+        <span class="tag">検討中</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">会社概要</div>
+      <h2>Company Profile</h2>
+      <p>代表社員の東 将司は、モード学園でバッグ設計を3年間学んだ後、レディースバッグメーカーで17年、メンズバッグメーカーで3年半にわたり従事。レディースバッグ、メンズバッグを問わず、幅広い種類の鞄に対応できることが強みです。</p>
+    </div>
+    <dl class="profile">
+      <div class="profile-row"><dt>商号</dt><dd>合同会社喜久野</dd></div>
+      <div class="profile-row"><dt>設立</dt><dd>2026年8月4日</dd></div>
+      <div class="profile-row"><dt>所在地</dt><dd>大阪府東大阪市</dd></div>
+      <div class="profile-row"><dt>資本金</dt><dd>100,000円</dd></div>
+      <div class="profile-row"><dt>代表者</dt><dd>代表社員 東 将司</dd></div>
+      <div class="profile-row"><dt>事業目的</dt><dd>鞄・靴・衣類等の皮革製品及び繊維製品の修理・加工・クリーニング業、服飾雑貨・日用品雑貨の企画・製造・卸売及び小売業</dd></div>
+      <div class="profile-row"><dt>決算期</dt><dd>12月31日</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <h2>お問い合わせ</h2>
+        <p>鞄・革製品の修理に関するご相談は、下記までお気軽にお問い合わせください。</p>
+      </div>
+      <div class="contact-fields">
+        <div class="field">
+          <span class="label">MAIL</span>
+          <span class="value">neo102hs2@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+    <span>© 2026 合同会社喜久野</span>
+    <span>喜久野商店とは別法人のサイトです</span>
+  </div>
+</footer>
+
+</body>
+</html>
+
