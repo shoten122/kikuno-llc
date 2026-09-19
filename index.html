@@ -264,6 +264,57 @@
     color: var(--ink-soft);
     border-top: 1px solid var(--line);
   }
+
+  /* repair pricing */
+  .price-table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  table.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+  }
+  table.price-table th,
+  table.price-table td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  table.price-table thead th {
+    background: var(--surface-2);
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  table.price-table tbody tr:last-child td { border-bottom: none; }
+  table.price-table td:last-child,
+  table.price-table th:last-child {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .price-notes {
+    margin-top: 24px;
+    padding-left: 1.2em;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .price-notes li { margin-bottom: 6px; }
+  .price-closing {
+    margin-top: 28px;
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    color: var(--leather-deep);
+    border-top: 1px dashed var(--line);
+    padding-top: 20px;
+  }
+  @media (max-width: 560px) {
+    table.price-table th, table.price-table td { padding: 10px 14px; font-size: 0.86rem; }
+  }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
@@ -358,6 +409,49 @@ aqLrlxixR4kc85rLax52no11MFDUUyhKPfjKf5lv7gl4SPW1qNkZTUlOMvIlsISzvhFrtyux2xss8Zse
         <span class="tag">対応可能</span>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="repair-pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">PRICE LIST</div>
+      <h2>修理料金の目安</h2>
+      <p>鞄の修理内容ごとの料金目安をご案内いたします。</p>
+    </div>
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr><th>修理項目</th><th>内容例</th><th>料金目安（税込）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ほつれ直し（小）</td><td>縫い目のほつれ1〜2箇所</td><td>¥1,700〜</td></tr>
+          <tr><td>ほつれ直し（大）</td><td>広範囲の縫い直し</td><td>¥6,000〜</td></tr>
+          <tr><td>ファスナー交換</td><td>スライダー・務歯の交換</td><td>¥9,000〜</td></tr>
+          <tr><td>スライダーのみ交換</td><td>ファスナーの持ち手部分のみ</td><td>¥2,800〜</td></tr>
+          <tr><td>金具交換（Dカン・ナスカン等）</td><td>1箇所</td><td>¥2,200〜</td></tr>
+          <tr><td>根革の作製・交換</td><td>持ち手の付け根部分</td><td>¥4,000〜</td></tr>
+          <tr><td>持ち手の作製・交換</td><td>革製持ち手1本</td><td>¥10,500〜</td></tr>
+          <tr><td>内袋（裏地）の張替え</td><td>生地の部分〜全体交換</td><td>¥21,000〜</td></tr>
+          <tr><td>革の補修・部分染色</td><td>キズ・色落ちの補正</td><td>¥5,500〜</td></tr>
+          <tr><td>クリーニング</td><td>全体クリーニング</td><td>¥6,500〜</td></tr>
+          <tr><td>その他ご相談</td><td>上記以外の修理</td><td>要見積もり</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="price-notes">
+      <li>上記は税込の目安料金です。実際の金額は、お品物の状態や修理内容を確認したうえでお見積もりいたします。</li>
+      <li>金具・革素材などの部材費によって金額が変動する場合があります。</li>
+      <li>修理箇所が複数ある場合は、別途加算となります。</li>
+      <li>記載のない修理内容についても、お気軽にご相談ください。</li>
+      <li>納期はお品物の状態や混雑状況により前後する場合があります。</li>
+      <li>素材（革・生地・金具など）は、元の商品と全く同じものをご用意できない場合があります。近い色味・質感のもので代用させていただくことがあります。</li>
+      <li>手作業での修理のため、ステッチ（縫い目）の位置や間隔に、元の仕様と多少の誤差が生じる場合があります。</li>
+      <li>経年劣化が進んでいるお品物は、修理により近接部分に新たな傷みが生じる場合があります。</li>
+      <li>ブランド純正の部材・パーツを使用した修理ではございません。あらかじめご了承ください。</li>
+      <li>仕上がりにつきましては誠心誠意対応させていただいておりますが、手仕事による一点ごとの個性を含む修理という性質上、返品・返金でのご対応は原則として承っておりません。あらかじめご了承のうえ、ご依頼くださいますようお願いいたします。</li>
+    </ul>
+    <p class="price-closing">手仕事だからこそ生まれる個性は、二つと同じもののない一点ものの魅力でもあります。その表情も含めて、長くご愛用いただければ幸いです。</p>
   </div>
 </section>
 
